@@ -21,4 +21,20 @@ public class ParametrosDeBusca {
     public OrdenarPor getOrdernarPor() {
         return ordernarPor;
     }
+
+    public void setResultadosPorPagina(int resultadosPorPagina) {
+        this.resultadosPorPagina = resultadosPorPagina;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setTipoDeBusca(TipoDeBusca tipoDeBusca) {
+        this.tipoDeBusca = tipoDeBusca;
+    }
+
+    public void setOrdernarPor(OrdenarPor ordernarPor) {
+        this.ordernarPor = ordernarPor;
+    }
 }

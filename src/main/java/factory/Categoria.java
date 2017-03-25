@@ -1,5 +1,5 @@
 package factory;
 
 public enum Categoria {
-    TUDO
+    EM_PROMOCAO, ELETRONICOS, TUDO
 }
