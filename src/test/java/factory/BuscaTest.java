@@ -9,7 +9,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaNormal() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -22,7 +22,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaNormalComPaginacao() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -34,7 +34,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaNormalComOrdem() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -46,7 +46,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaPromocional() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -60,7 +60,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaPromocionalComResultadoPorPagina() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -75,7 +75,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaPromocionalOrdenadoPorMaisRecenteSempre() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -88,7 +88,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaPromocionalNaCategoriaEmPromocaoSempre() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -101,7 +101,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaPorCategoria() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -116,7 +116,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaPorCategoriaComResultadosPorPagina() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -130,7 +130,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaPorCategoriaComOrdenacao() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
@@ -144,7 +144,7 @@ public class BuscaTest {
 
     @Test
     public void criaCriterioDeBuscaNormalQuandoCategoriaNaoEspecificada() {
-        ServicoDeBusca servico = mock(ServicoDeBusca.class);
+        ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
         ParametrosDeBusca parametros = new ParametrosDeBusca();
