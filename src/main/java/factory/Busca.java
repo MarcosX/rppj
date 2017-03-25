@@ -28,7 +28,7 @@ public class Busca {
         } else if (parametros.getTipoDeBusca().equals(TipoDeBusca.POR_CATEGORIA)) {
             criterio.setCategoria(parametros.getCategoria());
             if (parametros.getCategoria().equals(Categoria.TUDO)) {
-                // Se categoria não for especificada, volta para busca padrão
+                // Se categoria não for especificada, volta para busca normal
                 criterio.setOrdernarPor(OrdenarPor.RELEVANCIA);
             } else {
                 // Se tiver categoria, ordena por mais recente

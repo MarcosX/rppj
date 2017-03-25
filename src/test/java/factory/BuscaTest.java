@@ -8,7 +8,7 @@ import static org.mockito.Mockito.mock;
 public class BuscaTest {
 
     @Test
-    public void criaCriterioDeBuscaPadrao() {
+    public void criaCriterioDeBuscaNormal() {
         ServicoDeBusca servico = mock(ServicoDeBusca.class);
 
         Busca busca = new Busca(servico);
@@ -21,7 +21,7 @@ public class BuscaTest {
     }
 
     @Test
-    public void criaCriterioDeBuscaPadraoComPaginacao() {
+    public void criaCriterioDeBuscaNormalComPaginacao() {
         ServicoDeBusca servico = mock(ServicoDeBusca.class);
 
         Busca busca = new Busca(servico);
@@ -33,7 +33,7 @@ public class BuscaTest {
     }
 
     @Test
-    public void criaCriterioDeBuscaPadraoComOrdem() {
+    public void criaCriterioDeBuscaNormalComOrdem() {
         ServicoDeBusca servico = mock(ServicoDeBusca.class);
 
         Busca busca = new Busca(servico);
@@ -143,7 +143,7 @@ public class BuscaTest {
     }
 
     @Test
-    public void criaCriterioDeBuscaPadraoQuandoCategoriaNaoEspecificada() {
+    public void criaCriterioDeBuscaNormalQuandoCategoriaNaoEspecificada() {
         ServicoDeBusca servico = mock(ServicoDeBusca.class);
 
         Busca busca = new Busca(servico);
