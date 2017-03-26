@@ -9,7 +9,7 @@ public class FabricaDeCriterioTest {
     @Test
     public void criaCriterioDeBuscaNormal() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.NORMAL);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioNormal();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getPaginacao(), 15);
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.NAO_ESPECIFICADO);
@@ -20,7 +20,7 @@ public class FabricaDeCriterioTest {
     public void criaCriterioDeBuscaNormalComPaginacao() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.NORMAL);
         parametros.setResultadosPorPagina(20);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioNormal();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getPaginacao(), 20);
     }
@@ -29,7 +29,7 @@ public class FabricaDeCriterioTest {
     public void criaCriterioDeBuscaNormalComOrdem() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.NORMAL);
         parametros.setOrdernarPor(OrdenarPor.RECENTE);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioNormal();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.RECENTE);
     }
@@ -37,7 +37,7 @@ public class FabricaDeCriterioTest {
     @Test
     public void criaCriterioDeBuscaPromocional() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioPromocional();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getPaginacao(), 15);
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.RECENTE);
@@ -48,7 +48,7 @@ public class FabricaDeCriterioTest {
     public void criaCriterioDeBuscaPromocionalComResultadoPorPagina() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
         parametros.setResultadosPorPagina(20);
-        CriterioDeBusca criterio =  new FabricaDeCriterio(parametros).criterioPromocional();
+        CriterioDeBusca criterio =  new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getPaginacao(), 20);
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.RECENTE);
@@ -59,7 +59,7 @@ public class FabricaDeCriterioTest {
     public void criaCriterioDeBuscaPromocionalOrdenadoPorMaisRecenteSempre() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
         parametros.setOrdernarPor(OrdenarPor.RELEVANCIA);
-        CriterioDeBusca criterio =  new FabricaDeCriterio(parametros).criterioPromocional();
+        CriterioDeBusca criterio =  new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.RECENTE);
     }
@@ -68,7 +68,7 @@ public class FabricaDeCriterioTest {
     public void criaCriterioDeBuscaPromocionalNaCategoriaEmPromocaoSempre() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
         parametros.setCategoria(Categoria.TUDO);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioPromocional();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getCategoria(), Categoria.EM_PROMOCAO);
     }
@@ -77,7 +77,7 @@ public class FabricaDeCriterioTest {
     public void criaCriterioDeBuscaPorCategoria() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
         parametros.setCategoria(Categoria.ELETRONICOS);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioPorCategoria();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getPaginacao(), 15);
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.RECENTE);
@@ -89,7 +89,7 @@ public class FabricaDeCriterioTest {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
         parametros.setCategoria(Categoria.ELETRONICOS);
         parametros.setResultadosPorPagina(20);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioPorCategoria();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getPaginacao(), 20);
     }
@@ -99,7 +99,7 @@ public class FabricaDeCriterioTest {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
         parametros.setCategoria(Categoria.ELETRONICOS);
         parametros.setOrdernarPor(OrdenarPor.PRECO);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioPorCategoria();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.PRECO);
     }
@@ -107,7 +107,7 @@ public class FabricaDeCriterioTest {
     @Test
     public void criaCriterioDeBuscaNormalQuandoCategoriaNaoEspecificada() {
         ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
-        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criterioPorCategoria();
+        CriterioDeBusca criterio = new FabricaDeCriterio(parametros).criarCriterio();
 
         assertEquals(criterio.getPaginacao(), 15);
         assertEquals(criterio.getOrdernarPor(), OrdenarPor.NAO_ESPECIFICADO);

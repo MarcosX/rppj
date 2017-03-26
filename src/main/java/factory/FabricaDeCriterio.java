@@ -1,13 +1,26 @@
 package factory;
 
-public class FabricaDeCriterio {
+class FabricaDeCriterio {
     private final ParametrosDeBusca parametros;
 
-    public FabricaDeCriterio(ParametrosDeBusca parametros) {
+    FabricaDeCriterio(ParametrosDeBusca parametros) {
         this.parametros = parametros;
     }
 
-    public CriterioDeBusca criterioNormal() {
+    CriterioDeBusca criarCriterio() {
+        CriterioDeBusca criterio;
+        if (parametros.getTipoDeBusca().equals(TipoDeBusca.PROMOCIONAL)) {
+            criterio = new FabricaDeCriterio(parametros).criterioPromocional();
+        } else if (parametros.getTipoDeBusca().equals(TipoDeBusca.POR_CATEGORIA)) {
+            criterio = new FabricaDeCriterio(parametros).criterioPorCategoria();
+        } else {
+            criterio = new FabricaDeCriterio(parametros).criterioNormal();
+        }
+
+        return criterio;
+    }
+
+    private CriterioDeBusca criterioNormal() {
         CriterioDeBusca criterio = new CriterioDeBusca();
         criterio.setPaginacao(parametros.getResultadosPorPagina());
         criterio.setCategoria(parametros.getCategoria());
@@ -15,7 +28,7 @@ public class FabricaDeCriterio {
         return criterio;
     }
 
-    public CriterioDeBusca criterioPromocional() {
+    private CriterioDeBusca criterioPromocional() {
         CriterioDeBusca criterio = new CriterioDeBusca();
         criterio.setPaginacao(parametros.getResultadosPorPagina());
         criterio.setCategoria(Categoria.EM_PROMOCAO);
@@ -23,7 +36,7 @@ public class FabricaDeCriterio {
         return criterio;
     }
 
-    public CriterioDeBusca criterioPorCategoria() {
+    private CriterioDeBusca criterioPorCategoria() {
         if (parametros.getCategoria().equals(Categoria.TUDO)) {
             return criterioNormal();
         }
