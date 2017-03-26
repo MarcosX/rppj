@@ -3,8 +3,12 @@ package factory;
 public class ParametrosDeBusca {
     private int resultadosPorPagina = 15;
     private Categoria categoria = Categoria.TUDO;
-    private TipoDeBusca tipoDeBusca = TipoDeBusca.NORMAL;
-    private OrdenarPor ordernarPor = OrdenarPor.RELEVANCIA;
+    private TipoDeBusca tipoDeBusca;
+    private OrdenarPor ordernarPor = OrdenarPor.NAO_ESPECIFICADO;
+
+    public ParametrosDeBusca(TipoDeBusca tipoDeBusca) {
+        this.tipoDeBusca = tipoDeBusca;
+    }
 
     public int getResultadosPorPagina() {
         return resultadosPorPagina;
@@ -28,10 +32,6 @@ public class ParametrosDeBusca {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-    }
-
-    public void setTipoDeBusca(TipoDeBusca tipoDeBusca) {
-        this.tipoDeBusca = tipoDeBusca;
     }
 
     public void setOrdernarPor(OrdenarPor ordernarPor) {

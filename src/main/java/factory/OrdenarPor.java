@@ -1,5 +1,5 @@
 package factory;
 
 public enum OrdenarPor {
-    RECENTE, PRECO, RELEVANCIA
+    RECENTE, PRECO, NAO_ESPECIFICADO, RELEVANCIA
 }

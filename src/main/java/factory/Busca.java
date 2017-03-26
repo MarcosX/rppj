@@ -32,7 +32,12 @@ public class Busca {
                 criterio.setOrdernarPor(OrdenarPor.RELEVANCIA);
             } else {
                 // Se tiver categoria, ordena por mais recente
-                criterio.setOrdernarPor(parametros.getOrdernarPor());
+                if (parametros.getOrdernarPor().equals(OrdenarPor.NAO_ESPECIFICADO)) {
+                    criterio.setOrdernarPor(OrdenarPor.RECENTE);
+                } else {
+                    // Se ordenação for especificada, mantém
+                    criterio.setOrdernarPor(parametros.getOrdernarPor());
+                }
             }
         } else { //Busca normal
             criterio.setOrdernarPor(parametros.getOrdernarPor());

@@ -12,11 +12,11 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.NORMAL);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
         assertEquals(criterio.getPaginacao(), 15);
-        assertEquals(criterio.getOrdernarPor(), OrdenarPor.RELEVANCIA);
+        assertEquals(criterio.getOrdernarPor(), OrdenarPor.NAO_ESPECIFICADO);
         assertEquals(criterio.getCategoria(), Categoria.TUDO);
     }
 
@@ -25,7 +25,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.NORMAL);
         parametros.setResultadosPorPagina(20);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
@@ -37,7 +37,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.NORMAL);
         parametros.setOrdernarPor(OrdenarPor.RECENTE);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
@@ -49,8 +49,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.PROMOCIONAL);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
         assertEquals(criterio.getPaginacao(), 15);
@@ -63,8 +62,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.PROMOCIONAL);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
         parametros.setResultadosPorPagina(20);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
@@ -78,8 +76,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.PROMOCIONAL);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
         parametros.setOrdernarPor(OrdenarPor.RELEVANCIA);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
@@ -91,8 +88,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.PROMOCIONAL);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.PROMOCIONAL);
         parametros.setCategoria(Categoria.TUDO);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
@@ -104,13 +100,12 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.POR_CATEGORIA);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
         parametros.setCategoria(Categoria.ELETRONICOS);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
         assertEquals(criterio.getPaginacao(), 15);
-        assertEquals(criterio.getOrdernarPor(), OrdenarPor.RELEVANCIA);
+        assertEquals(criterio.getOrdernarPor(), OrdenarPor.RECENTE);
         assertEquals(criterio.getCategoria(), Categoria.ELETRONICOS);
     }
 
@@ -119,8 +114,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.POR_CATEGORIA);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
         parametros.setCategoria(Categoria.ELETRONICOS);
         parametros.setResultadosPorPagina(20);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
@@ -133,8 +127,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.POR_CATEGORIA);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
         parametros.setCategoria(Categoria.ELETRONICOS);
         parametros.setOrdernarPor(OrdenarPor.PRECO);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
@@ -147,8 +140,7 @@ public class BuscaTest {
         ServicoDeBusca servico = new ServicoDeBusca();
 
         Busca busca = new Busca(servico);
-        ParametrosDeBusca parametros = new ParametrosDeBusca();
-        parametros.setTipoDeBusca(TipoDeBusca.POR_CATEGORIA);
+        ParametrosDeBusca parametros = new ParametrosDeBusca(TipoDeBusca.POR_CATEGORIA);
         CriterioDeBusca criterio = busca.criarCriterio(parametros);
 
         assertEquals(criterio.getPaginacao(), 15);
