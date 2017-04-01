@@ -3,80 +3,36 @@ package strategy;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class LoginTest {
+
     @Test
-    public void autenticaViaFaceNote() throws Exception {
-        ServicoFaceNoteLogin servicoFaceNote = new ServicoFaceNoteLoginFake();
-        ServicoZuiterLogin servicoZuiter = new ServicoZuiterLoginFake();
-        Login login = new Login(servicoFaceNote, servicoZuiter);
+    public void fazLoginViaFaceNote() throws Exception {
+        LoginViaFaceNote loginViaFaceNote = mock(LoginViaFaceNote.class);
+        LoginViaZuiter loginViaZuiter = mock(LoginViaZuiter.class);
 
-        String usuario = "Gil";
-        DadosDeLogin dados = new DadosDeLogin(usuario, Autenticacao.VIA_FACENOTE);
+        Login login = new Login(loginViaFaceNote, loginViaZuiter);
 
-        RespostaLogin respostaLogin = login.com(dados);
+        String usuario = "Paula";
+        DadosDeLogin dadosDeLogin = new DadosDeLogin(usuario, Autenticacao.VIA_FACENOTE);
+        login.com(dadosDeLogin);
 
-        assertEquals(true, respostaLogin.getStatus());
-        assertEquals("login com sucesso", respostaLogin.getMessage());
+        verify(loginViaFaceNote).autenticar(usuario);
     }
 
     @Test
-    public void autenticaViaFaceNoteFalhaComAcessoRevocado() throws Exception {
-        ServicoFaceNoteLogin servicoFaceNote = new ServicoFaceNoteLoginFake();
-        ServicoZuiterLogin servicoZuiter = new ServicoZuiterLoginFake();
-        Login login = new Login(servicoFaceNote, servicoZuiter);
+    public void fazLoginViaZuiter() throws Exception {
+        LoginViaFaceNote loginViaFaceNote = mock(LoginViaFaceNote.class);
+        LoginViaZuiter loginViaZuiter = mock(LoginViaZuiter.class);
 
-        String usuario = "Ana";
-        DadosDeLogin dados = new DadosDeLogin(usuario, Autenticacao.VIA_FACENOTE);
+        Login login = new Login(loginViaFaceNote, loginViaZuiter);
 
-        RespostaLogin respostaLogin = login.com(dados);
+        String usuario = "Paula";
+        DadosDeLogin dadosDeLogin = new DadosDeLogin(usuario, Autenticacao.VIA_ZUITER);
+        login.com(dadosDeLogin);
 
-        assertEquals(false, respostaLogin.getStatus());
-        assertEquals("acesso revocado", respostaLogin.getMessage());
-    }
-
-    @Test
-    public void autenticaViaFaceNoteFalhaComAcessoBloqueado() throws Exception {
-        ServicoFaceNoteLogin servicoFaceNote = new ServicoFaceNoteLoginFake();
-        ServicoZuiterLogin servicoZuiter = new ServicoZuiterLoginFake();
-        Login login = new Login(servicoFaceNote, servicoZuiter);
-
-        String usuario = "Celso";
-        DadosDeLogin dados = new DadosDeLogin(usuario, Autenticacao.VIA_FACENOTE);
-
-        RespostaLogin respostaLogin = login.com(dados);
-
-        assertEquals(false, respostaLogin.getStatus());
-        assertEquals("acesso bloqueado", respostaLogin.getMessage());
-    }
-
-    @Test
-    public void autenticaViaZuiter() throws Exception {
-        ServicoFaceNoteLogin servicoFaceNote = new ServicoFaceNoteLoginFake();
-        ServicoZuiterLogin servicoZuiter = new ServicoZuiterLoginFake();
-        Login login = new Login(servicoFaceNote, servicoZuiter);
-
-        String usuario = "Gil";
-        DadosDeLogin dados = new DadosDeLogin(usuario, Autenticacao.VIA_ZUITER);
-
-        RespostaLogin respostaLogin = login.com(dados);
-
-        assertEquals(true, respostaLogin.getStatus());
-        assertEquals("login com sucesso", respostaLogin.getMessage());
-    }
-
-    @Test
-    public void autenticaViaZuiterFalhaComAcessoPendente() throws Exception {
-        ServicoFaceNoteLogin servicoFaceNote = new ServicoFaceNoteLoginFake();
-        ServicoZuiterLogin servicoZuiter = new ServicoZuiterLoginFake();
-        Login login = new Login(servicoFaceNote, servicoZuiter);
-
-        String usuario = "Ana";
-        DadosDeLogin dados = new DadosDeLogin(usuario, Autenticacao.VIA_ZUITER);
-
-        RespostaLogin respostaLogin = login.com(dados);
-
-        assertEquals(false, respostaLogin.getStatus());
-        assertEquals("acesso pendente", respostaLogin.getMessage());
+        verify(loginViaZuiter).autenticar(usuario);
     }
 }
