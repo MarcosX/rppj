@@ -11,15 +11,15 @@ public class Login {
     }
 
     public RespostaLogin com(DadosDeLogin dadosDeLogin) {
-        if (dadosDeLogin.getMetodo().equals(Autenticacao.VIA_FACENOTE)) {
-            return loginViaFaceNote.autenticar(dadosDeLogin.getUsuario());
-        } else if (dadosDeLogin.getMetodo().equals(Autenticacao.VIA_ZUITER)) {
-            return loginViaZuiter.autenticar(dadosDeLogin.getUsuario());
-        }
-
         String mensagem = "método de autenticação não especificado";
         boolean status = false;
+        RespostaLogin respostaLogin = new RespostaLogin(mensagem, status);
 
-        return new RespostaLogin(mensagem, status);
+        if (dadosDeLogin.getMetodo().equals(Autenticacao.VIA_FACENOTE)) {
+            respostaLogin = loginViaFaceNote.autenticar(dadosDeLogin.getUsuario());
+        } else if (dadosDeLogin.getMetodo().equals(Autenticacao.VIA_ZUITER)) {
+            respostaLogin = loginViaZuiter.autenticar(dadosDeLogin.getUsuario());
+        }
+        return respostaLogin;
     }
 }
