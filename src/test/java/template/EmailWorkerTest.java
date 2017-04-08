@@ -21,7 +21,8 @@ public class EmailWorkerTest {
 
         ServicoEmail servicoEmail = new ServicoEmail();
         EmailWorker emailWorker = new EmailWorker(servicoEmail);
-        EmailEnviado email = emailWorker.enviar(idUsuario, destinatarios, Email.CONVITE);
+        EnviarEmail enviarEmail = new EnviarEmail(idUsuario, Email.CONVITE, destinatarios);
+        EmailEnviado email = emailWorker.enviar(enviarEmail);
 
         assertEquals(destinatarios, email.getDestinatarios());
         assertEquals(assunto, email.getAssunto());
@@ -38,7 +39,8 @@ public class EmailWorkerTest {
         ServicoEmail servicoEmail = mock(ServicoEmail.class);
         when(servicoEmail.enviarEmail(assunto, corpoEmail, destinatarios)).thenThrow(new TimeoutException("Erro de test"));
         EmailWorker emailWorker = new EmailWorker(servicoEmail);
-        EmailEnviado email = emailWorker.enviar(idUsuario, destinatarios, Email.CONVITE);
+        EnviarEmail enviarEmail = new EnviarEmail(idUsuario, Email.CONVITE, destinatarios);
+        EmailEnviado email = emailWorker.enviar(enviarEmail);
 
         assertEquals(Collections.emptyList(), email.getDestinatarios());
         assertEquals("", email.getAssunto());
@@ -61,7 +63,8 @@ public class EmailWorkerTest {
                 .thenThrow(new TimeoutException("Erro de test"))
                 .thenReturn(emailEnviado);
         EmailWorker emailWorker = new EmailWorker(servicoEmail);
-        EmailEnviado email = emailWorker.enviar(idUsuario, destinatarios, Email.CONVITE);
+        EnviarEmail enviarEmail = new EnviarEmail(idUsuario, Email.CONVITE, destinatarios);
+        EmailEnviado email = emailWorker.enviar(enviarEmail);
 
         assertEquals(destinatarios, email.getDestinatarios());
         assertEquals(assunto, email.getAssunto());
