@@ -22,7 +22,7 @@ public class EmailWorkerTest {
         ServicoEmail servicoEmail = new ServicoEmail();
         EmailWorker emailWorker = new EmailWorker(servicoEmail);
         EnviarEmail enviarEmail = new EnviarEmail(idUsuario, Email.CONVITE, destinatarios);
-        EmailEnviado email = emailWorker.enviar(enviarEmail);
+        EmailEnviado email = emailWorker.executar(enviarEmail);
 
         assertEquals(destinatarios, email.getDestinatarios());
         assertEquals(assunto, email.getAssunto());
@@ -40,7 +40,7 @@ public class EmailWorkerTest {
         when(servicoEmail.enviarEmail(assunto, corpoEmail, destinatarios)).thenThrow(new TimeoutException("Erro de test"));
         EmailWorker emailWorker = new EmailWorker(servicoEmail);
         EnviarEmail enviarEmail = new EnviarEmail(idUsuario, Email.CONVITE, destinatarios);
-        EmailEnviado email = emailWorker.enviar(enviarEmail);
+        EmailEnviado email = emailWorker.executar(enviarEmail);
 
         assertEquals(Collections.emptyList(), email.getDestinatarios());
         assertEquals("", email.getAssunto());
@@ -64,7 +64,7 @@ public class EmailWorkerTest {
                 .thenReturn(emailEnviado);
         EmailWorker emailWorker = new EmailWorker(servicoEmail);
         EnviarEmail enviarEmail = new EnviarEmail(idUsuario, Email.CONVITE, destinatarios);
-        EmailEnviado email = emailWorker.enviar(enviarEmail);
+        EmailEnviado email = emailWorker.executar(enviarEmail);
 
         assertEquals(destinatarios, email.getDestinatarios());
         assertEquals(assunto, email.getAssunto());

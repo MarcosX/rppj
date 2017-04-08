@@ -1,40 +1,53 @@
 package template;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EmailWorker {
+public class EmailWorker extends TemplateWorker{
 
     private static Logger logger = Logger.getLogger(EmailWorker.class.getName());
 
     private ServicoEmail servicoEmail;
     private int limiteTentativas;
+    private int contadorTentativas;
 
     public EmailWorker(ServicoEmail servicoEmail) {
         this.servicoEmail = servicoEmail;
-        limiteTentativas = 5;
     }
 
-    public EmailEnviado enviar(EnviarEmail enviarEmail) {
+    @Override
+    protected <T> T trabalhar(Object parametros) throws TimeoutException {
+        EnviarEmail enviarEmail = (EnviarEmail) parametros;
         Usuario usuario = buscarUsuario(enviarEmail.getIdUsuario());
         String corpoEmail = gerarCorpoEmail(enviarEmail.getTipoEmail(), usuario);
         String assunto = gerarAssunto(enviarEmail.getTipoEmail(), usuario);
-        EmailEnviado emailEnviado = new EmailEnviado("", Collections.emptyList());
+        EmailEnviado emailEnviado = servicoEmail.enviarEmail(assunto, corpoEmail, enviarEmail.getDestinatarios());
+        contadorTentativas = limiteTentativas;
+        return (T) emailEnviado;
+    }
 
-        int contadorTentativas = 0;
-        while (contadorTentativas < limiteTentativas) {
-            try {
-                emailEnviado = servicoEmail.enviarEmail(assunto, corpoEmail, enviarEmail.getDestinatarios());
-                contadorTentativas = limiteTentativas;
-            } catch (TimeoutException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-                contadorTentativas++;
-            }
-        }
-        return emailEnviado;
+    @Override
+    protected <T> T valorPadraoDeRetorno() {
+        return (T) new EmailEnviado("", Collections.emptyList());
+    }
+
+    @Override
+    protected void trataExcecao(TimeoutException e) {
+        logger.log(Level.SEVERE, e.getMessage());
+        contadorTentativas++;
+    }
+
+    @Override
+    protected boolean deveContinuarTentando() {
+        return limiteTentativas > contadorTentativas;
+    }
+
+    @Override
+    protected void antesExecucao(Object parametros) {
+        limiteTentativas = 5;
+        contadorTentativas = 0;
     }
 
     private String gerarAssunto(Email tipoEmail, Usuario usuario) {
@@ -51,4 +64,5 @@ public class EmailWorker {
         // implementação não importa
         return new Usuario(idUsuario);
     }
+
 }
