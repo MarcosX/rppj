@@ -18,16 +18,16 @@ public class EmailWorker {
         limiteTentativas = 5;
     }
 
-    public EmailEnviado enviar(int idUsuario, List<String> destinatarios, Email tipoEmail) {
-        Usuario usuario = buscarUsuario(idUsuario);
-        String corpoEmail = gerarCorpoEmail(tipoEmail, usuario);
-        String assunto = gerarAssunto(tipoEmail, usuario);
+    public EmailEnviado enviar(EnviarEmail enviarEmail) {
+        Usuario usuario = buscarUsuario(enviarEmail.getIdUsuario());
+        String corpoEmail = gerarCorpoEmail(enviarEmail.getTipoEmail(), usuario);
+        String assunto = gerarAssunto(enviarEmail.getTipoEmail(), usuario);
         EmailEnviado emailEnviado = new EmailEnviado("", Collections.emptyList());
 
         int contadorTentativas = 0;
         while (contadorTentativas < limiteTentativas) {
             try {
-                emailEnviado = servicoEmail.enviarEmail(assunto, corpoEmail, destinatarios);
+                emailEnviado = servicoEmail.enviarEmail(assunto, corpoEmail, enviarEmail.getDestinatarios());
                 contadorTentativas = limiteTentativas;
             } catch (TimeoutException e) {
                 logger.log(Level.SEVERE, e.getMessage());
