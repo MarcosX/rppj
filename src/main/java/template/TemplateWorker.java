@@ -7,13 +7,13 @@ public abstract class TemplateWorker {
     public <T>T executar(Object parametros) {
         antesExecucao(parametros);
         T resultado = valorPadraoDeRetorno();
-        while (deveContinuarTentando()) {
+        do {
             try {
                 resultado = trabalhar(parametros);
             } catch (TimeoutException e) {
                 trataExcecao(e);
             }
-        }
+        } while (deveContinuarTentando());
         return resultado;
     }
 
@@ -21,9 +21,11 @@ public abstract class TemplateWorker {
 
     protected abstract void trataExcecao(TimeoutException e);
 
-    protected abstract boolean deveContinuarTentando();
+    protected boolean deveContinuarTentando() {
+        return false;
+    };
 
     protected abstract <T>T trabalhar(Object parametros) throws TimeoutException;
 
-    protected abstract void antesExecucao(Object parametros);
+    protected void antesExecucao(Object parametros) {};
 }
