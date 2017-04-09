@@ -17,6 +17,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
+
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.+"
