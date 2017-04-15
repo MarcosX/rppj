@@ -1,6 +1,7 @@
 package strategy;
 
 import org.junit.Test;
+import state.EstadoMaria;
 
 import static org.junit.Assert.*;
 
