@@ -1,7 +1,5 @@
 package adapter;
 
-import java.util.List;
-
 public class ClienteSoap {
     // Implementação não é importante
     public String obterPreferenciasEmail(String idUniversal) {

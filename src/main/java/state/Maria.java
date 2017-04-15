@@ -1,6 +1,4 @@
-package strategy;
-
-import state.EstadoMaria;
+package state;
 
 public class Maria {
 

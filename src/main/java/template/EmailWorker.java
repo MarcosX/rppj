@@ -1,7 +1,6 @@
 package template;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
