@@ -1,5 +1,7 @@
 package strategy;
 
+import state.EstadoMaria;
+
 public class Maria {
 
     private EstadoMaria estadoAtual;
