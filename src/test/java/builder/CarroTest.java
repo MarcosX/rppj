@@ -22,7 +22,9 @@ public class CarroTest {
 
     @Test
     public void validaPlacaExiste() throws Exception {
-        Carro carroInvalido = new Carro("modelo a", "fabricante a", 2000, null, null, 0l, 2000, 0l, 0l);
+        CarroValidoBuilder builder = new CarroValidoBuilder().comPlaca(null);
+
+        Carro carroInvalido = builder.build();
 
         String mensagemDeErro = "placa nao pode ser nulo";
         assertFalse(carroInvalido.validar());

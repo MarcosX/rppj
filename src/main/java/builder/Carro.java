@@ -48,4 +48,40 @@ public class Carro {
     public List<String> getErros() {
         return erros;
     }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public int getAnoFabricacao() {
+        return anoFabricacao;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public long getKmRodados() {
+        return kmRodados;
+    }
+
+    public int getAnoModelo() {
+        return anoModelo;
+    }
+
+    public long getPrecoMinimo() {
+        return precoMinimo;
+    }
+
+    public long getPrecoAnunciado() {
+        return precoAnunciado;
+    }
 }
