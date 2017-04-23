@@ -25,7 +25,7 @@ public class PersonagemTest {
     @Test
     public void equiparAdagaMagicaAumentaForcaDeAtaqueEm15() throws Exception {
         Personagem personagem = new Personagem(5, 10);
-        personagem.equiparArma(new AdagaMagica());
+        personagem.equiparArma(new ArmaMagica(new Adaga()));
 
         assertEquals(20, personagem.getForcaDeAtaque());
     }
@@ -33,7 +33,7 @@ public class PersonagemTest {
     @Test
     public void equiparAdagaMagicaAumentaVelocidadeEm7() throws Exception {
         Personagem personagem = new Personagem(5, 10);
-        personagem.equiparArma(new AdagaMagica());
+        personagem.equiparArma(new ArmaMagica(new Adaga()));
 
         assertEquals(17, personagem.getVelocidade());
     }
@@ -57,7 +57,7 @@ public class PersonagemTest {
     @Test
     public void equiparEspadaLongaMagicaAumentaForcaDeAtaqueEm25() throws Exception {
         Personagem personagem = new Personagem(5, 10);
-        personagem.equiparArma(new EspadaLongaMagica());
+        personagem.equiparArma(new ArmaMagica(new EspadaLonga()));
 
         assertEquals(30, personagem.getForcaDeAtaque());
     }
@@ -65,7 +65,7 @@ public class PersonagemTest {
     @Test
     public void equiparEspadaLongaMagicaAumentaVelocidadeEm2() throws Exception {
         Personagem personagem = new Personagem(5, 10);
-        personagem.equiparArma(new EspadaLongaMagica());
+        personagem.equiparArma(new ArmaMagica(new EspadaLonga()));
 
         assertEquals(12, personagem.getVelocidade());
     }
