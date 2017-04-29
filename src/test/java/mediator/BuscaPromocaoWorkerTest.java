@@ -17,13 +17,11 @@ public class BuscaPromocaoWorkerTest {
         Usuario usuario = new Usuario();
         usuario.setProdutosDeInteresse(produtos);
 
-        NotificadorCliente notificadorCliente = mock(NotificadorCliente.class);
-        NotificadorFornecedor notificadorFornecedor = mock(NotificadorFornecedor.class);
-        BuscaPromocaoWorker worker = new BuscaPromocaoWorker(notificadorCliente, notificadorFornecedor);
+        NotificadorMediator notificador = mock(NotificadorMediator.class);
+        BuscaPromocaoWorker worker = new BuscaPromocaoWorker(notificador);
         worker.executar(usuario, produtos);
 
-        verify(notificadorCliente).produtosEmPromocao(usuario, produtos);
-        verify(notificadorFornecedor).produtosEmPromocao(produtos);
+        verify(notificador).produtosEmPromocao(usuario, produtos);
     }
 
     @Test
@@ -33,15 +31,13 @@ public class BuscaPromocaoWorkerTest {
         Usuario usuario = new Usuario();
         usuario.setProdutosDeInteresse(produtosDeInteresse);
 
-        NotificadorCliente notificadorCliente = mock(NotificadorCliente.class);
-        NotificadorFornecedor notificadorFornecedor = mock(NotificadorFornecedor.class);
-        BuscaPromocaoWorker worker = new BuscaPromocaoWorker(notificadorCliente, notificadorFornecedor);
+        NotificadorMediator notificador = mock(NotificadorMediator.class);
+        BuscaPromocaoWorker worker = new BuscaPromocaoWorker(notificador);
         List<Produto> produtosEmPromoção = Arrays.asList(
                 new Produto("Super Maria Sisters"), new Produto("Gamer Keyboard"));
         worker.executar(usuario, produtosEmPromoção);
 
         List<Produto> produtosNotificados = Arrays.asList(new Produto("Super Maria Sisters"));
-        verify(notificadorCliente).produtosEmPromocao(usuario, produtosNotificados);
-        verify(notificadorFornecedor).produtosEmPromocao(produtosNotificados);
+        verify(notificador).produtosEmPromocao(usuario, produtosNotificados);
     }
 }

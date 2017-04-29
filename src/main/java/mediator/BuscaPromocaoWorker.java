@@ -5,12 +5,10 @@ import java.util.stream.Collectors;
 
 public class BuscaPromocaoWorker {
 
-    private NotificadorCliente notificadorCliente;
-    private NotificadorFornecedor notificadorFornecedor;
+    private NotificadorMediator notificador;
 
-    public BuscaPromocaoWorker(NotificadorCliente notificadorCliente, NotificadorFornecedor notificadorFornecedor) {
-        this.notificadorCliente = notificadorCliente;
-        this.notificadorFornecedor = notificadorFornecedor;
+    public BuscaPromocaoWorker(NotificadorMediator notificador) {
+        this.notificador = notificador;
     }
 
     public void executar(Usuario usuario, List<Produto> produtosPromocionais) {
@@ -20,8 +18,7 @@ public class BuscaPromocaoWorker {
                 .filter(produtosPromocionais::contains)
                 .collect(Collectors.toList());
 
-        notificadorCliente.produtosEmPromocao(usuario, produtos);
-        notificadorFornecedor.produtosEmPromocao(produtos);
+        notificador.produtosEmPromocao(usuario, produtos);
         atualizarNotificacaoDeUsuario();
     }
 
