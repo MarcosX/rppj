@@ -25,4 +25,4 @@ Todo o trabalho está disponível com licensa Creative Commons (para mais inform
 
 ## Build Status
 
-[![CircleCI](https://circleci.com/bb/marcosbrizeno/refatoracao-code-java/tree/master.svg?style=svg&circle-token=eddad3fb3b0ab6f37dea197e7cc13b7eb928b656)](https://circleci.com/bb/marcosbrizeno/refatoracao-code-java/tree/master)
+[![CircleCI](https://circleci.com/gh/MarcosX/rppj/tree/master.png?circle-token=:circle-token)](https://circleci.com/gh/MarcosX/rppj/tree/master)
